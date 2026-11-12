@@ -842,6 +842,118 @@ body.globe-on .globe-fallback{display:none}
 @media (max-width:1100px){
   .live-pill{display:none}
 }
+
+/* ============================================================
+   MOBILE / TABLET POLISH
+   ============================================================ */
+@media (max-width:1100px){
+  .slide{overflow-y:auto;padding-bottom:110px}
+  .slide-inner{height:auto;min-height:100%}
+  .slide-head{flex:0 0 auto}
+  .agenda-grid,.domains,.cap-grid,.framework,.models,.proj-grid,.ir-grid,.partner-grid,.services,.timeline,.global-grid,.soc-grid,.ot-grid,.closing-grid{flex:0 0 auto}
+  .agenda-grid,.cap-grid,.framework,.models,.proj-grid,.ir-grid,.partner-grid{align-content:start}
+  .menu-grid{flex:1;min-height:0}
+}
+@media (max-width:860px){
+  .partner-grid{grid-template-rows:none;grid-auto-rows:100px}
+  .globe-card{min-height:380px}
+  .closing-meta{position:static;margin-top:24px;text-align:left}
+  .soc-caps{gap:10px}
+  .soc-copy p{font-size:12px}
+  .threat-feed{margin-top:12px}
+  .tf-row{grid-template-columns:42px 64px 1fr}
+}
+@media (max-width:620px){
+  .cover-visual{display:none}
+  .cover-logo{width:min(280px,72vw);margin-bottom:20px}
+  .cover h1{font-size:clamp(2.7rem,11vw,4rem);margin-top:10px}
+  .cover-sub{font-size:15px;margin-top:14px;line-height:1.5}
+  .cover-meta{margin-top:18px;font-size:9.5px;gap:9px}
+  .cover .cta{margin-top:20px;padding:13px 18px;font-size:10px}
+  .cover-kicker{font-size:9px}
+  .agenda-card{padding:20px}
+  .agenda-card h3{font-size:1.1rem;margin:12px 0 6px}
+  .agenda-card p{font-size:12px}
+  .agenda-card .go{top:16px;right:16px}
+  .domain{min-height:auto;padding:20px}
+  .domain h3{font-size:1.2rem}
+  .domain p{font-size:12px}
+  .cap{padding:20px}
+  .cap h3{font-size:1.2rem}
+  .model h3{font-size:2.6rem}
+  .proj{padding:12px}
+  .proj-copy h3{font-size:12.5px}
+  .proj-copy p{font-size:10.5px}
+  .ir{min-height:auto;padding:20px}
+  .partner-grid{grid-template-columns:repeat(3,1fr);grid-template-rows:none;grid-auto-rows:92px}
+  .partner-tile{border-radius:12px}
+  .timeline{padding-top:0}
+  .step{text-align:left;display:grid;grid-template-columns:44px 1fr;gap:12px;padding:0}
+  .step .node{margin:0;width:40px;height:40px}
+  .step h3{margin-top:2px}
+  .step p{grid-column:2}
+  .global-grid{gap:18px}
+  .globe-card{min-height:340px}
+  .globe-hud{left:14px;top:14px;font-size:7px}
+  .globe-coords{right:14px;bottom:14px;font-size:7px}
+  .globe-badge{left:14px;bottom:14px;font-size:6px}
+  .big-num{font-size:3.2rem}
+  .loc{padding:12px 0}
+  .loc b{font-size:1.05rem}
+  .soc-caps{grid-template-columns:1fr}
+  .soc-copy h3{font-size:2rem}
+  .soc-copy p{font-size:12px}
+  .threat-feed{padding:10px}
+  .tf-row{grid-template-columns:40px 60px 1fr;font-size:7.5px}
+  .tf-row .m{font-size:7.5px}
+  .sim-btn{font-size:7px}
+  .soc-alert b{font-size:12px}
+  .closing h2{font-size:clamp(2.8rem,11vw,4.2rem)}
+  .contact .mail{font-size:1rem}
+  .closing-meta{font-size:8px}
+  .closing-right{position:relative;right:auto;top:auto;transform:none;opacity:1;width:200px;margin:24px auto 0}
+  .closing-orb{width:200px}
+  .closing-orb .logo-plate{width:84%}
+}
+
+/* ============================================================
+   MOBILE FIXES 2
+   ============================================================ */
+@media (max-width:1100px){
+  .soc-visual{opacity:.12!important}
+}
+@media (max-width:860px){
+  .cover::after,.closing::after{display:none}
+  .svc-foot{position:static;margin-top:12px;opacity:1}
+}
+@media (max-width:620px){
+  .soc-visual{display:none}
+  .cover{padding-top:96px}
+  .cover .slide-inner{justify-content:flex-start}
+  .cover .scroll-hint{display:flex;position:absolute;left:22px;bottom:78px;font-size:8px;letter-spacing:.18em}
+  .closing{padding-top:96px}
+}
+
+/* soften the WebGL field behind content */
+.slide::before{
+  background:
+    linear-gradient(180deg,rgba(4,8,18,.22),rgba(4,8,18,.48)),
+    radial-gradient(720px 480px at 84% 8%,rgba(46,155,255,.13),transparent 68%);
+}
+
+/* ============================================================
+   MOBILE CHROME
+   ============================================================ */
+@media (max-width:860px){
+  .topbar{
+    background:linear-gradient(180deg,rgba(4,8,18,.96),rgba(4,8,18,.55) 65%,transparent);
+    backdrop-filter:blur(6px);
+  }
+  .nav{
+    background:linear-gradient(0deg,rgba(4,8,18,.96),rgba(4,8,18,.55) 65%,transparent);
+    padding-top:18px;
+  }
+}
 </style>
 </head>
 <body>
@@ -2016,7 +2128,7 @@ function initThree() {
     const camera = new THREE.PerspectiveCamera(72, innerWidth / innerHeight, .1, 2000);
     camera.position.z = 80;
 
-    const N = reduce ? 900 : 2400;
+    const N = reduce ? 600 : 1500;
     const pos = new Float32Array(N * 3);
     const col = new Float32Array(N * 3);
     const palette = [[.22,.88,1],[.18,.61,1],[1,.42,.21],[.75,.9,1]];
@@ -2030,9 +2142,20 @@ function initThree() {
     const geo = new THREE.BufferGeometry();
     geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
     geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+    const starTex = (() => {
+      const c = document.createElement("canvas");
+      c.width = c.height = 32;
+      const g = c.getContext("2d");
+      const grd = g.createRadialGradient(16, 16, 0, 16, 16, 16);
+      grd.addColorStop(0, "rgba(255,255,255,1)");
+      grd.addColorStop(.35, "rgba(255,255,255,.65)");
+      grd.addColorStop(1, "rgba(255,255,255,0)");
+      g.fillStyle = grd; g.fillRect(0, 0, 32, 32);
+      return new THREE.CanvasTexture(c);
+    })();
     const stars = new THREE.Points(geo, new THREE.PointsMaterial({
-      size: 2.05, vertexColors: true, transparent: true, opacity: .9,
-      blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
+      size: 2.4, map: starTex, vertexColors: true, transparent: true, opacity: .55,
+      blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true, alphaTest: .01
     }));
     scene.add(stars);
 
